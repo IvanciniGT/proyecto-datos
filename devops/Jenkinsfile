@@ -13,16 +13,21 @@ spec:
     node(POD_LABEL) {
        checkout scm
        if( buildingTag() ){
-           checkout scm
-           echo 'Generando nueva release de los datos'
-           echo 'Nos aseguramos de tener en local la rama develop'
-           echo 'Cambiamos a master'
-           sh 'git pull origin master'
-           sh 'git checkout master'
-           echo 'Llevamos lo último de develop'
-           sh 'git merge origin/develop'
-           //sh 'git push'
-           //sh 'git push tags'
+           withCredentials([usernamePassword(credentialsId: env.GIT_CREDENTIAL_ID, usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+               echo 'Generando nueva release de los datos'
+               echo 'Nos aseguramos de tener en local la rama develop'
+               echo 'Cambiamos a master'
+               sh 'git pull origin master'
+               sh 'git checkout master'
+               echo 'Llevamos lo último de develop'
+               sh 'git merge origin/develop'
+               sh '''cat <<EOF | git push
+ivanciniGT
+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
+EOF
+'''
+               //sh 'git push tags'
+            }
        }
        
     }
