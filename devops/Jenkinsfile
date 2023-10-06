@@ -1,0 +1,24 @@
+podTemplate(yaml: '''
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: git
+    image: bitnami/git:latest
+    command:
+    - sleep
+    args:
+    - infinity
+''') {
+    node(POD_LABEL) {
+       checkout scm
+       if( buildingTag() ){
+           echo 'Generando nueva release de los datos'
+           sh 'git switch master'
+           sh 'git merge develop'
+           sh 'git push'
+           sh 'git push tags'
+       }
+       
+    }
+}
