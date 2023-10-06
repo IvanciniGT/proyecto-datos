@@ -20,7 +20,7 @@ spec:
            sh 'git pull origin master'
            sh 'git checkout master'
            echo 'Llevamos lo último de develop'
-           sh 'git merge develop'
+           sh 'git merge origin/develop'
            //sh 'git push'
            //sh 'git push tags'
        }
