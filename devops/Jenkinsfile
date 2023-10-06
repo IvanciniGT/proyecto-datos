@@ -27,7 +27,7 @@ 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
 EOF
 '''
 //               //sh 'git push tags'
-            }
+            //}
        }
        
     }
