@@ -13,6 +13,7 @@ spec:
     node(POD_LABEL) {
        checkout scm
        if( buildingTag() ){
+           checkout scm
            echo 'Generando nueva release de los datos'
            echo 'Nos aseguramos de tener en local la rama develop'
            echo 'Cambiamos a master'
