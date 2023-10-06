@@ -15,10 +15,9 @@ spec:
        if( buildingTag() ){
            echo 'Generando nueva release de los datos'
            echo 'Nos aseguramos de tener en local la rama develop'
-           sh 'git checkout develop'
            echo 'Cambiamos a master'
-           sh 'git pull master'
            sh 'git checkout master'
+           sh 'git pull master'
            echo 'Llevamos lo último de develop'
            sh 'git merge develop'
            //sh 'git push'
