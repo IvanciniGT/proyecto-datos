@@ -23,7 +23,7 @@ spec:
                sh 'git merge origin/develop'
                sh '''cat <<EOF | git push
 ivanciniGT
-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
+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
 EOF
 '''
 //               //sh 'git push tags'
